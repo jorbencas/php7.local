@@ -1,3 +1,3 @@
 <?php
 require 'utils/utils.php';
-require 'views/index.view.php';
+require 'views/blog.view.php';

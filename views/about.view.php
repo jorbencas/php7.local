@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include(__DIR__."./partials/inicio.doc.part.php") ?>
-<body id="page-top">
+<?php include __DIR__ . '/partials/inicio-doc.part.php';?>
+<?php include __DIR__ . '/partials/nav.part.php';?>
 
-<?php include(__DIR__."./partials/nav.part.php"); ?>
 
 <!-- Principal Content Start-->
    <div id="about">
@@ -169,7 +166,5 @@
          <p>Photography Fanatic Template &copy; 2017</p>
      </div>
    </footer>
-   
-   <?php include(__DIR__."/partials/fin.doc.part.php") ?>
-</body>
-</html>
+
+<?php include __DIR__ . '/partials/fin-doc.part.php';?>
