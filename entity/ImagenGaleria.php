@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sandra
- * Date: 29/11/2018
- * Time: 11:57
- */
 
 class ImagenGaleria
 {
