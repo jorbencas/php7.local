@@ -1,6 +1,6 @@
-<?php include __DIR__ . '/partials/inicio-doc.part.php';?>
+<?php include __DIR__ . '/partials/inicio-doc.part.php'; ?>
 
-<?php include __DIR__ . '/partials/nav.part.php';?>
+<?php include __DIR__ . '/partials/nav.part.php'; ?>
 
 <!-- Principal Content Start -->
    <div id="blog">
@@ -168,4 +168,4 @@
      </div>
    </footer>
 
-<?php include __DIR__ . '/partials/fin-doc.part.php';?>
+<?php include __DIR__ . '/partials/fin-doc.part.php'; ?>
