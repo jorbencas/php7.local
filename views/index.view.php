@@ -1,6 +1,7 @@
-<?php include __DIR__ . '/partials/inicio-doc.part.php'; ?>
+<?php include __DIR__ . '/partials/inicio-doc.part.php'?>;
+<?php include __DIR__ . '/partials/nav.part.php'?>;
 
-<?php include __DIR__ . '/partials/nav.part.php'; ?>
+
 
 <!-- Principal Content Start -->
    <div id="index">
@@ -20,52 +21,49 @@
          </div>
       </div>
 
-       <div id="index-body">
-           <!-- Pictures Navigation table -->
-           <div class="table-responsive">
-               <table class="table text-center">
-                   <thead>
-                   <tr>
-                       <td><a class="link active" href="#category1" data-toggle="tab">category I</a></td>
-                       <td><a class="link" href="#category2" data-toggle="tab">category II</a></td>
-                       <td><a class="link" href="#category3" data-toggle="tab">category III</a></td>
-                   </tr>
-                   </thead>
-               </table>
-               <hr>
-           </div>
+      <div id="index-body">
+      <!-- Pictures Navigation table -->
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <td><a class="link active" href="#category1" data-toggle="tab">category I</a></td>
+                <td><a class="link" href="#category2" data-toggle="tab">category II</a></td>
+                <td><a class="link" href="#category3" data-toggle="tab">category III</a></td>
+              </tr>
+            </thead>
+          </table>
+          <hr>
+        </div>
+      
+      <!-- Navigation Table Content -->
+        <div class="tab-content">
 
-
-          <!-- Navigation Table Content -->
-          <div class="tab-content">
-         <!-- First Category pictures -->
-          <?php
-          $categoria="category1";
-          $categoriaActiva=true;
-          shuffle($imagenes);
-          include __DIR__ . '/partials/image-gallery.part.php'
-
-          ?>
+        <!-- First Category pictures -->
+            <?php
+                $categoria='category1';
+                $categoriaActiva=true;
+                shuffle($imagenes);
+                include __DIR__ . '/partials/image-gallery.part.php'
+            ?>
         <!-- End of First category pictures -->
 
         <!--second category pictures -->
-          <?php
-          $categoria="category2";
-          $categoriaActiva=false;
-          shuffle($imagenes);
-          include __DIR__ . '/partials/image-gallery.part.php'
-
-          ?>
+            <?php
+            $categoria='category2';
+            $categoriaActiva=false;
+            shuffle($imagenes);
+            include __DIR__ . '/partials/image-gallery.part.php'
+            ?>
         <!-- End of second category pictures -->
 
         <!-- Third Category Pictures -->
-          <?php
-          $categoria="category3";
-          $categoriaActiva=false;
-          shuffle($imagenes);
-          include __DIR__ . '/partials/image-gallery.part.php'
-
-          ?>
+            <?php
+            $categoria='category3';
+            $categoriaActiva=false;
+            shuffle($imagenes);
+            include __DIR__ . '/partials/image-gallery.part.php'
+            ?>
         <!-- Third Category Pictures -->
 
         </div>
@@ -139,4 +137,4 @@
      </div>
    </footer>
 
-<?php include __DIR__ . '/partials/fin-doc.part.php'; ?>
+<?php include __DIR__ . '/partials/fin-doc.part.php'?>;

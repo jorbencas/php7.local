@@ -1,6 +1,7 @@
-<?php include __DIR__ . '/partials/inicio-doc.part.php'; ?>
+<?php include __DIR__ . '/partials/inicio-doc.part.php'?>;
+<?php include __DIR__ . '/partials/nav.part.php'?>;
 
-<?php include __DIR__ . '/partials/nav.part.php'; ?>
+
 
 <!-- Principal Content Start -->
    <div id="contact">
@@ -9,51 +10,49 @@
        	   <h1>CONTACT US</h1>
        	   <hr>
        	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-
-            <?php if($_SERVER['REQUEST_METHOD']==='POST') : ?>
-                <div class="alert alert-<?= empty($errores)? 'info':'danger';?> alert-dismissible" role="alert">
+	       <?php if($_SERVER['REQUEST_METHOD']==='POST') : ?>
+                <div class="alert alert-<?= empty($errores) ? 'info':'danger'; ?> alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
-                    <?php if(empty($errores)): ?>
-                        <p><?= $mensaje?></p>
-                    <?php else :?>
+                    <?php if (empty($errores)) : ?>
+                        <p><?= $mensaje ?></p>
+                    <?php else : ?>
                         <ul>
-                            <?php foreach ($errores as $error) : ?>
+                            <?php foreach($errores as $error) : ?>
                                 <li><?= $error ?></li>
                             <?php endforeach; ?>
                         </ul>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
-            <?php endif;?>
-
-            <form class="form-horizontal" action="<?= $_SERVER['PHP_SELF']?>" method="post"> <!--Se le está diciendo que este formulario se va a procesar por php-->
+           <?php endif; ?>
+            <form class="form-horizontal" action="<?= $_SERVER['PHP_SELF']?>" method="post">
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control">First Name</label>
-	       	  		<input class="form-control" type="text" name="nombre">
+	       	  		<input class="form-control" type="text" name="nombre" value=<?= $nombre ?>>
 	       	  	</div>
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control">Last Name</label>
-	       	  		<input class="form-control" type="text" name="apellidos">
+	       	  		<input class="form-control" type="text" name="apellidos" value=<?= $apellidos ?>>
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Email</label>
-	       	  		<input class="form-control" type="text" name="email">
+	       	  		<input class="form-control" type="text" name="email" value=<?= $email ?>>
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Subject</label>
-	       	  		<input class="form-control" type="text" name="asunto">
+	       	  		<input class="form-control" type="text" name="asunto" value=<?= $asunto ?>>
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Message</label>
-	       	  		<textarea class="form-control" name="texto"></textarea>
+	       	  		<textarea class="form-control" name="texto"> <?= $texto ?></textarea>
 	       	  		<button class="pull-right btn btn-lg sr-button">SEND</button>
 	       	  	</div>
 	       	  </div>
@@ -84,4 +83,4 @@
    </div>
 <!-- Principal Content Start -->
 
-<?php include __DIR__ . '/partials/fin-doc.part.php'; ?>
+<?php include __DIR__ . '/partials/fin-doc.part.php'?>;

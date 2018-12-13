@@ -1,9 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: lliurex
+ * Date: 29/11/2018
+ * Time: 10:57
+ */
+require __DIR__.'/../database/IEntity.php';
 
-class ImagenGaleria
+class ImagenGaleria implements IEntity
 {
-    const RUTA_IMAGENES_PORTFOLIO='images/index/portfolio/';
-    const RUTA_IMAGENES_GALLERY='images/index/gallery/';
+    const RUTA_IMAGENES_PORTFOLIO ='../images/index/portfolio/';
+    const RUTA_IMAGENES_GALLERY ='../images/index/gallery/';
+    /**
+     * @var int
+     */
+    private $id;
     /**
      * @var string
      */
@@ -17,7 +28,7 @@ class ImagenGaleria
      */
     private $numVisualizaciones;
     /**
-     * @var int
+     * @var  int
      */
     private $numLikes;
     /**
@@ -33,14 +44,43 @@ class ImagenGaleria
      * @param int $numLikes
      * @param int $numDownloads
      */
-    public function __construct($nombre, $descripcion, $numVisualizaciones=0, $numLikes=0, $numDownloads=0)
+    public function __construct(string $nombre="", string $descripcion="", int $numVisualizaciones=0, int $numLikes=0, int $numDownloads=0)
     {
+
+        $this->id=null;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->numVisualizaciones = $numVisualizaciones;
         $this->numLikes = $numLikes;
         $this->numDownloads = $numDownloads;
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return ImagenGaleria
+     */
+    public function setId(int $id): ImagenGaleria
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getDescripcion();
+    }
+
 
     /**
      * @return string
@@ -135,22 +175,28 @@ class ImagenGaleria
     /**
      * @return string
      */
-    public function __toString()
+    public function getUrlPortfolio() : string
     {
-        return $this->getDescripcion();
+        return self::RUTA_IMAGENES_PORTFOLIO . $this->getNombre();
     }
 
     /**
      * @return string
      */
-    public function getUrlPortfolio() : string {
-        return self::RUTA_IMAGENES_PORTFOLIO.$this->getNombre();
+    public function getUrlGallery() : string
+    {
+        return self::RUTA_IMAGENES_GALLERY . $this->getNombre();
     }
 
-    /**
-     * @return string
-     */
-    public function getUrlGallery() : string {
-        return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
+
+    public function toArray()
+    {
+        return[
+            'nombre'=>$this->getNombre(),
+            'descripcion'=>$this->getDescripcion(),
+            'numVisualziaciones'=>$this->getNumVisualizaciones(),
+            'numLikes'=>$this->getNumLikes(),
+            'numDownloads'=>$this->getNumDownloads()
+        ];
     }
 }
