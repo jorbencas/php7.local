@@ -1,14 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sportak
+ * User: jorge
  * Date: 11/12/2018
  * Time: 9:24
  */
-require_once __DIR__.'/../exception/AppException.php';
+require_once __DIR__.'/../exceptions/AppException.php';
 class App
 {
     private static $container=[];
+
+
     /**
      * @param string $key
      * @param $value
@@ -16,6 +18,7 @@ class App
     public static function bind(string $key,$value){
         static::$container[$key]=$value;
     }
+
     /**
      * @param string $key
      * @return mixed
@@ -28,6 +31,7 @@ class App
             return static::$container[$key];
         }
     }
+
     /**
      * @return PDO
      */
@@ -35,6 +39,7 @@ class App
         if(!array_key_exists('connection',static::$container)){
             static::$container['connection']=Connection::make();
         }
+
         return static::$container['connection'];
     }
 }

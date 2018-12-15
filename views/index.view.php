@@ -1,7 +1,6 @@
-<?php include __DIR__ . '/partials/inicio-doc.part.php'?>;
-<?php include __DIR__ . '/partials/nav.part.php'?>;
+<?php include __DIR__. '/partials/inicio-doc.part.php'; ?>
 
-
+<?php include __DIR__. '/partials/nav-doc.part.php'; ?>
 
 <!-- Principal Content Start -->
    <div id="index">
@@ -39,30 +38,31 @@
       <!-- Navigation Table Content -->
         <div class="tab-content">
 
-        <!-- First Category pictures -->
+            <!-- First Category pictures -->
             <?php
-                $categoria='category1';
-                $categoriaActiva=true;
-                shuffle($imagenes);
-                include __DIR__ . '/partials/image-gallery.part.php'
+            $categoria="category1";
+            $categoriaActiva=true;
+            shuffle($imagenes);
+            include __DIR__ . '/partials/image-gallery.part.php';
             ?>
-        <!-- End of First category pictures -->
+
+            <!-- End of First category pictures -->
 
         <!--second category pictures -->
             <?php
-            $categoria='category2';
+            $categoria="category2";
             $categoriaActiva=false;
             shuffle($imagenes);
-            include __DIR__ . '/partials/image-gallery.part.php'
+            include __DIR__ . '/partials/image-gallery.part.php';
             ?>
         <!-- End of second category pictures -->
 
         <!-- Third Category Pictures -->
             <?php
-            $categoria='category3';
+            $categoria="category2";
             $categoriaActiva=false;
             shuffle($imagenes);
-            include __DIR__ . '/partials/image-gallery.part.php'
+            include __DIR__ . '/partials/image-gallery.part.php';
             ?>
         <!-- Third Category Pictures -->
 
@@ -137,4 +137,4 @@
      </div>
    </footer>
 
-<?php include __DIR__ . '/partials/fin-doc.part.php'?>;
+<?php include __DIR__. '/partials/fin-doc.part.php'; ?>

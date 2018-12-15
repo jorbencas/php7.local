@@ -1,18 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: lliurex
+ * User: jorge
  * Date: 07/12/2018
- * Time: 9:01
+ * Time: 10:02
  */
 
 class Connection
 {
+
     /**
      * @return PDO
      */
-    public static function make()
-    {
+    public static function make(){
+
 
         try{
             $config=App::get('config')['database'];
@@ -22,10 +23,10 @@ class Connection
             $config['password'],
             $config['options']
         );
+
         }catch(PDOException $PDOException){
             die($PDOException->getMessage());
         }
         return $connection;
     }
-
 }

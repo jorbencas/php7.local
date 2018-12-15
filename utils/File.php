@@ -1,86 +1,111 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: sportak
+ * Date: 04/12/2018
+ * Time: 8:47
+ */
+
+require_once __DIR__ . '/../exceptions/FileException.php';
 
 class File
 {
     private $file;
-    private $fileName;
+    private $filename;
 
     /**
      * File constructor.
-     * @param $fileName
+     * @param $filename
      * @param array $arrTypes
      * @throws FileException
      */
-    public function __construct($fileName,array $arrTypes)
+
+    public function __construct($filename,array $arrTypes)
     {
-        $this->file= $_FILES[$fileName];
-        $this->fileName='';
-        if(!isset($this->file))
-        {
-           throw new FileException("Debes seleccionar un fichero");
+        $this->file = $_FILES[$filename];
+        $this->filename='';
+        if(!isset($this->file)){
+            throw new FileException("Debes seleccionar un fichero");
         }
         if($this->file['error']!==UPLOAD_ERR_OK){
-            switch($this->file['error'])
-            {
+            switch ($this->file['error']){
                 case UPLOAD_ERR_INI_SIZE:
+
                 case UPLOAD_ERR_FORM_SIZE:
-                    throw new FileException("El fichero es demasiado grande");
+                throw new FileException("El fichero es demasaido grande");
                 case UPLOAD_ERR_PARTIAL:
-                    throw new FileException("No se ha subido fichero completo");
+                    throw new FileException("No se ha podido subir el archivo completo.");
                 default:
                     throw new FileException("Error al subir el fichero");
-                break;
+                    break;
             }
+        }
+        if(in_array($this->file['type'],$arrTypes)===false){
+            throw new FileException("El tipo de fichero no es soportado");
+        }
 
-        }
-        if(in_array($this->file['type'],$arrTypes)===false) {
-            throw new FileException("Tipo de fichero no soportado");
-        }
     }
 
     /**
      * @return string
      */
-    public function getFileName(): string
+    public function getFilename()
     {
-        return $this->fileName;
+        return $this->filename;
     }
 
     /**
-     * @param string $rutaDestino
+     * @param string $filename
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+    }
+
+    /**
+     * @param $rutaDestino
      * @throws FileException
      */
-    public function saveUploadFile(string $rutaDestino)
-    {
-        if(is_uploaded_file($this->file['tmp_name'])===false)
-            throw new FileException("el archivo no se ha subido con un formulario");
-        $this->fileName=$this->file['name'];
-        $ruta=$rutaDestino . $this->fileName;
-        if(is_file($ruta)===true){
-            $idUnico=time();
-            $this->fileName=$this->fileName . $idUnico;
-            $ruta=$rutaDestino . $this->fileName;
+
+    public function saveUploadFile($rutaDestino){
+        if(is_uploaded_file($this->file['tmp_name'])===false){
+            throw new FileException("El archivo no se ha subido con un formulario");
+        }else{
+            $this->filename=$this->file['name'];
+            $ruta=$rutaDestino.$this->filename;
+
+            if(is_file($ruta)===true){
+                $idUnico=time();
+                $this->filename=$this->filename.$idUnico;
+            }
+
+            if(move_uploaded_file($this->file['tmp_name'],$ruta)){
+            }else{
+                throw new FileException("No se puede mover el fichero a su destino");
+            }
         }
-        if(move_uploaded_file($this->file['tmp_name'], $ruta)===false)
-            throw new FileException('no se puede mover el fichero a su destino');
-
     }
 
     /**
-     * @param string $rutaOrigen
-     * @param string $rutaDestino
+     * @param $rutaOrigen
+     * @param $rutaDestino
      * @throws FileException
      */
-    public function copyFile(string $rutaOrigen, string $rutaDestino)
-    {
-       $origen=$rutaOrigen.$this->fileName;
-       $destino=$rutaDestino.$this->fileName;
-       if(is_file($origen)===false)
-           throw new FileException("No existe el fichero $origen  que estas intentando copiar");
-        if(is_file($destino)===true)
-            throw new FileException("Ya exite el fichero $destino  y  no se puede sobreescribir");
-        if(copy($origen, $destino)===false)
-            throw new FileException("No se ha podido copiar $origen en $destino ");
+
+    public function copyFile($rutaOrigen,$rutaDestino){
+        $origen=$rutaOrigen.$this->filename;
+        $destino=$rutaDestino.$this->filename;
+        if(is_file($origen)===false){
+            throw new FileException("No existe el fichero origen");
+        }
+        if(is_file($destino)===true){
+            throw new FileException("Ya existe el fichero $destino y no se puede copiar");
+        }
+        if(copy($origen,$destino)===false){
+            throw new FileException("No se ha podido copiar $origen con $destino");
+        }
     }
+
+
 
 }

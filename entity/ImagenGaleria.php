@@ -1,20 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: lliurex
+ * User: jorge
  * Date: 29/11/2018
- * Time: 10:57
+ * Time: 11:57
  */
-require __DIR__.'/../database/IEntity.php';
-
+require_once __DIR__.'/../database/IEntity.php';
 class ImagenGaleria implements IEntity
 {
-    const RUTA_IMAGENES_PORTFOLIO ='../images/index/portfolio/';
-    const RUTA_IMAGENES_GALLERY ='../images/index/gallery/';
-    /**
-     * @var int
-     */
-    private $id;
+    const RUTA_IMAGENES_PORTFOLIO='../images/index/portfolio/';
+    const RUTA_IMAGENES_GALLERY='../images/index/gallery/';
     /**
      * @var string
      */
@@ -28,7 +23,7 @@ class ImagenGaleria implements IEntity
      */
     private $numVisualizaciones;
     /**
-     * @var  int
+     * @var int
      */
     private $numLikes;
     /**
@@ -37,22 +32,27 @@ class ImagenGaleria implements IEntity
     private $numDownloads;
 
     /**
+     * @var int
+     */
+    private $id;
+
+    /**
      * ImagenGaleria constructor.
+     * @param $id
      * @param string $nombre
      * @param string $descripcion
      * @param int $numVisualizaciones
      * @param int $numLikes
      * @param int $numDownloads
      */
-    public function __construct(string $nombre="", string $descripcion="", int $numVisualizaciones=0, int $numLikes=0, int $numDownloads=0)
+    public function __construct($nombre='', $descripcion='', $numVisualizaciones=0, $numLikes=0, $numDownloads=0)
     {
-
-        $this->id=null;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->numVisualizaciones = $numVisualizaciones;
         $this->numLikes = $numLikes;
         $this->numDownloads = $numDownloads;
+        $this->id=null;
     }
 
     /**
@@ -64,21 +64,11 @@ class ImagenGaleria implements IEntity
     }
 
     /**
-     * @param int $id
-     * @return ImagenGaleria
+     * @param int $int
      */
-    public function setId(int $id): ImagenGaleria
+    public function setId(int $int)
     {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getDescripcion();
+        $this->id = $int;
     }
 
 
@@ -175,26 +165,31 @@ class ImagenGaleria implements IEntity
     /**
      * @return string
      */
-    public function getUrlPortfolio() : string
+    public function __toString()
     {
-        return self::RUTA_IMAGENES_PORTFOLIO . $this->getNombre();
+        return $this->getDescripcion();
     }
 
     /**
      * @return string
      */
-    public function getUrlGallery() : string
-    {
-        return self::RUTA_IMAGENES_GALLERY . $this->getNombre();
+    public function getUrlPortfolio() : string {
+        return self::RUTA_IMAGENES_PORTFOLIO.$this->getNombre();
     }
 
+    /**
+     * @return string
+     */
+    public function getUrlGallery() : string {
+        return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
+    }
 
-    public function toArray()
+    public function toArray():array
     {
         return[
             'nombre'=>$this->getNombre(),
             'descripcion'=>$this->getDescripcion(),
-            'numVisualziaciones'=>$this->getNumVisualizaciones(),
+            'numVisualizaciones'=>$this->getNumVisualizaciones(),
             'numLikes'=>$this->getNumLikes(),
             'numDownloads'=>$this->getNumDownloads()
         ];

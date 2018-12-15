@@ -2,11 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: jorge
- * Date: 12/12/2018
- * Time: 21:48
+ * Date: 11/12/2018
+ * Time: 10:31
  */
 
 interface IEntity
 {
     public function toArray();
+
+
 }

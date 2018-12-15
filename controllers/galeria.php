@@ -33,11 +33,10 @@ try {
             $mensaje='Se ha guardado la imagen';
             $descripcion ='';
 
-        #$imagenes=$queryBuilder->findAll();
-    }else{
-        $imagenGalleriaRepository=new ImagenGaleriaRepository();
-        $imagenes=$imagenGalleriaRepository->findAll();
+
     }
+        $imagenes=$imagenGalleriaRepository->findAll();
+
     require __DIR__.'/../views/galeria.view.php';
 }catch(QueryException $queryException){
     $errores[]=$queryException->getMessage();
