@@ -8,13 +8,13 @@
     <title>PhotographItem-Responsive Theme</title>
 
     <!-- Bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
     <!-- Bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <!-- Magnific-popup css -->
-    <link rel="stylesheet" type="text/css" href="../css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../../css/magnific-popup.css">
     <!-- Font Awesome icons -->
-    <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../font-awesome/css/font-awesome.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
